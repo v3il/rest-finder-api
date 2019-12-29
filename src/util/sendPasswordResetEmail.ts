@@ -7,7 +7,7 @@ import { User } from '../models';
 export default async (user: User, locale: string): Promise<SentMessageInfo> => {
     const transporter = createMailTransporter();
 
-    const html = await getTemplateHTML('password_reset', {
+    const html = await getTemplateHTML('basic_email_template', {
         message: translateText('resetPasswordEmailMessage', locale),
         linkText: translateText('resetPasswordEmailLinkText', locale),
         href: `${config.FRONT_END_URL}/change_password?userHash=${user.userHash}`,
