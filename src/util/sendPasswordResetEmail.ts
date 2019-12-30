@@ -10,7 +10,7 @@ export default async (user: User, locale: string): Promise<SentMessageInfo> => {
     const html = await getTemplateHTML('password_reset', {
         message: translateText('resetPasswordEmailMessage', locale),
         linkText: translateText('resetPasswordEmailLinkText', locale),
-        href: `${config.FRONT_END_URL}/set_new_password?userHash=${user.userHash}`,
+        href: `${config.FRONT_END_URL}/change_password?userHash=${user.userHash}`,
     });
 
     const mailOptions = {
