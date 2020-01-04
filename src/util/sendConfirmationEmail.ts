@@ -8,18 +8,10 @@ export default async (user: User, locale: string): Promise<SentMessageInfo> => {
     const transporter = createMailTransporter();
 
     const html = await getTemplateHTML('basic_email_template', {
-        message: translateText('resetPasswordEmailMessage', locale),
-        linkText: translateText('resetPasswordEmailLinkText', locale),
+        message: translateText('confirmationEmailMessage', locale),
+        linkText: translateText('confirmationEmailButtonText', locale),
         href: `${config.SERVER_URL}/auth/verify_email/${user.userHash}`,
     });
-
-    // const html = await getTemplateHTML('email_confirmation', {
-    //     userHash,
-    //     locale,
-    //     serverURL: config.SERVER_URL,
-    //     message: translateText('confirmationEmailMessage', locale),
-    //     buttonText: translateText('confirmationEmailButtonText', locale),
-    // });
 
     const mailOptions = {
         html,
