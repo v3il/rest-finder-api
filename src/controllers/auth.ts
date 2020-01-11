@@ -87,7 +87,7 @@ async function register(request: express.Request, response: express.Response) {
 
     const userHash = generateUserHash(email);
 
-    await User.create({
+    const user = await User.create({
         email,
         userHash,
         password: encryptedPassword,
@@ -95,7 +95,7 @@ async function register(request: express.Request, response: express.Response) {
     });
 
     try {
-        await sendConfirmationEmail(email, userHash, request.locale);
+        await sendConfirmationEmail(user, request.locale);
     } catch (error) {
         logger.error(`An error occurred while sending email to ${email}`);
         logger.error(error.message);
@@ -152,7 +152,7 @@ async function resendConfirmationEmail(request: express.Request, response: expre
     });
 
     try {
-        await sendConfirmationEmail(userByHash.email, newUserHash, request.locale);
+        await sendConfirmationEmail(userByHash, request.locale);
     } catch (error) {
         logger.error(`An error occurred while sending email to ${userByHash.email}`);
         logger.error(error.message);
