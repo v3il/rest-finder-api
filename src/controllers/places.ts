@@ -86,26 +86,12 @@ async function getPlacesByFilters(request: express.Request, response: express.Re
             workingPeriodForToday: null,
         };
 
-        // const placeRestDuration = RestDurations.findById(place.restDuration);
-
-        // model.restDuration = {
-        //     id: placeRestDuration.id,
-        //     name: translateText(placeRestDuration.nameTextId, request.locale),
-        // };
-
         const placeRestCost = RestCosts.findById(place.restCost);
 
         model.restCost = {
             id: placeRestCost.id,
             name: translateText(placeRestCost.nameTextId, request.locale),
         };
-
-        // const placeCompanySize = CompanySizes.findById(place.companySize);
-
-        // model.companySize = {
-        //     id: placeCompanySize.id,
-        //     name: translateText(placeCompanySize.nameTextId, request.locale),
-        // };
 
         const workingPeriod = getWorkingPeriodForCurrentDay(place.workingPeriods);
 
