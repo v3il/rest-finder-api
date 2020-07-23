@@ -21,7 +21,7 @@ import logger from '../logger';
 
 async function getPlacesByFilters(request: express.Request, response: express.Response) {
     const {
-        categories, restCost, restDuration, companySize, restType, distance, userLatitude, userLongitude, workingOnly, ignoreStatus
+        categories, restCost, restType, distance, userLatitude, userLongitude, workingOnly, ignoreStatus
     } = request.query;
 
     const where: any = {};
