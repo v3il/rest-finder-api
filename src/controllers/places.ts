@@ -41,14 +41,6 @@ async function getPlacesByFilters(request: express.Request, response: express.Re
         where.restCost = restCost;
     }
 
-    if (RestDurations.isValid(restDuration)) {
-        where.restDuration = restDuration;
-    }
-
-    if (CompanySizes.isValid(companySize)) {
-        where.companySize = companySize;
-    }
-
     if (['true', 'false'].includes(restType)) {
         where.isActiveRest = restType === 'true';
     }
