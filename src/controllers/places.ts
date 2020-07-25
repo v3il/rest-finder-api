@@ -86,12 +86,12 @@ async function getPlacesByFilters(request: express.Request, response: express.Re
             workingPeriodForToday: null,
         };
 
-        const placeRestDuration = RestDurations.findById(place.restDuration);
+        // const placeRestDuration = RestDurations.findById(place.restDuration);
 
-        model.restDuration = {
-            id: placeRestDuration.id,
-            name: translateText(placeRestDuration.nameTextId, request.locale),
-        };
+        // model.restDuration = {
+        //     id: placeRestDuration.id,
+        //     name: translateText(placeRestDuration.nameTextId, request.locale),
+        // };
 
         const placeRestCost = RestCosts.findById(place.restCost);
 
