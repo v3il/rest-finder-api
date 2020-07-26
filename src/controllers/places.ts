@@ -100,12 +100,12 @@ async function getPlacesByFilters(request: express.Request, response: express.Re
             name: translateText(placeRestCost.nameTextId, request.locale),
         };
 
-        const placeCompanySize = CompanySizes.findById(place.companySize);
+        // const placeCompanySize = CompanySizes.findById(place.companySize);
 
-        model.companySize = {
-            id: placeCompanySize.id,
-            name: translateText(placeCompanySize.nameTextId, request.locale),
-        };
+        // model.companySize = {
+        //     id: placeCompanySize.id,
+        //     name: translateText(placeCompanySize.nameTextId, request.locale),
+        // };
 
         const workingPeriod = getWorkingPeriodForCurrentDay(place.workingPeriods);
 
