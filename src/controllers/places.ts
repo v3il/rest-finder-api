@@ -208,17 +208,17 @@ function validatePlaceParams(request: express.Request, response: express.Respons
         throw new BadRequest(translateText('errors.placeIsNotInCherkasy', request.locale));
     }
 
-    if (!(restDuration && RestDurations.isValid(Number(restDuration)))) {
-        throw new BadRequest(translateText('errors.wrongPlaceRestDuration', request.locale));
-    }
+    // if (!(restDuration && RestDurations.isValid(Number(restDuration)))) {
+    //     throw new BadRequest(translateText('errors.wrongPlaceRestDuration', request.locale));
+    // }
 
     if (!(restCost && RestCosts.isValid(Number(restCost)))) {
         throw new BadRequest(translateText('errors.wrongPlaceRestCost', request.locale));
     }
 
-    if (!(companySize && CompanySizes.isValid(Number(companySize)))) {
-        throw new BadRequest(translateText('errors.wrongPlaceCompanySize', request.locale));
-    }
+    // if (!(companySize && CompanySizes.isValid(Number(companySize)))) {
+    //     throw new BadRequest(translateText('errors.wrongPlaceCompanySize', request.locale));
+    // }
 
     if (typeof isActiveRest !== 'boolean') {
         throw new BadRequest(translateText('errors.wrongPlaceRestType', request.locale));

@@ -42,13 +42,7 @@ export class RestPlace extends Model<RestPlace> {
     isActiveRest: boolean;
 
     @Column
-    restDuration: number;
-
-    @Column
     restCost: number;
-
-    @Column
-    companySize: number;
 
     @Column({ defaultValue: true })
     confirmed: boolean;
