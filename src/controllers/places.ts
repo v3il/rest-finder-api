@@ -184,7 +184,7 @@ async function deletePlaces(request: express.Request, response: express.Response
 
 function validatePlaceParams(request: express.Request, response: express.Response, next: express.NextFunction) {
     const {
-        name, latitude, longitude, restDuration, restCost, companySize, isActiveRest, categoryIds, periods,
+        name, latitude, longitude, restCost, isActiveRest, categoryIds, periods,
     } = request.body;
 
     if (!(name && name.toString().length >= 3)) {
@@ -208,17 +208,9 @@ function validatePlaceParams(request: express.Request, response: express.Respons
         throw new BadRequest(translateText('errors.placeIsNotInCherkasy', request.locale));
     }
 
-    // if (!(restDuration && RestDurations.isValid(Number(restDuration)))) {
-    //     throw new BadRequest(translateText('errors.wrongPlaceRestDuration', request.locale));
-    // }
-
     if (!(restCost && RestCosts.isValid(Number(restCost)))) {
         throw new BadRequest(translateText('errors.wrongPlaceRestCost', request.locale));
     }
-
-    // if (!(companySize && CompanySizes.isValid(Number(companySize)))) {
-    //     throw new BadRequest(translateText('errors.wrongPlaceCompanySize', request.locale));
-    // }
 
     if (typeof isActiveRest !== 'boolean') {
         throw new BadRequest(translateText('errors.wrongPlaceRestType', request.locale));
@@ -275,16 +267,14 @@ function validatePlaceParams(request: express.Request, response: express.Respons
 
 async function addPlace(request: express.Request, response: express.Response) {
     const {
-        name, latitude, longitude, restDuration, restCost, companySize, isActiveRest, categoryIds, periods,
+        name, latitude, longitude, restCost, isActiveRest, categoryIds, periods,
     } = request.body;
 
     const placeModel = {
         name,
         latitude,
         longitude,
-        restDuration,
         restCost,
-        companySize,
         isActiveRest,
         confirmed: false,
     };
@@ -309,7 +299,7 @@ async function addPlace(request: express.Request, response: express.Response) {
 
 async function updatePlace(request: express.Request, response: express.Response) {
     const {
-        name, latitude, longitude, restDuration, restCost, companySize, isActiveRest, categoryIds, id, periods
+        name, latitude, longitude, restCost, isActiveRest, categoryIds, id, periods
     } = request.body;
 
     if (!id) {
@@ -326,9 +316,7 @@ async function updatePlace(request: express.Request, response: express.Response)
         name,
         latitude,
         longitude,
-        restDuration,
         restCost,
-        companySize,
         isActiveRest,
         manuallyUpdated: true,
     };
